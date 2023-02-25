@@ -58,41 +58,12 @@ const getProject = (event) => { //event adalah parameter yg dideklarasi sebagai 
     // Mengubah spesifik dari image menjadi sebuah blob object
     uploadImage = URL.createObjectURL(uploadImage[0])
 
-    // Statement untuk melihat Durasi dari endDate - startDate
-
-    startDate = new Date(startDate);
-    endDate = new Date(endDate);
-        let duration = Math.floor((endDate - startDate) / (30 * 24 * 60 * 60 * 1000));
-        if (duration > 0) duration = `${duration} month${duration > 1 ? "s" : ""}`;
-        else {
-            duration = Math.floor((endDate - startDate) / (7 * 24 * 60 * 60 * 1000));
-            if (duration > 0) duration = `${duration} week${duration > 1 ? "s" : ""}`;
-            else {
-                duration = Math.floor((endDate - startDate) / (24 * 60 * 60 * 1000));
-                if (duration > 0) duration = `${duration} day${duration > 1 ? "s" : ""}`;
-                else {
-                    duration = Math.floor((endDate - startDate) / (60 * 60 * 1000));
-                    if (duration > 0) duration = `${duration} hour${duration > 1 ? "s" : ""}`;
-                    else {
-                        duration = Math.floor((endDate - startDate) / (60 * 1000));
-                        if (duration > 0) duration = `${duration} minute${duration > 1 ? "s" : ""}`;
-                        else {
-                            duration = Math.floor((endDate - startDate) / (1000));
-                            if (duration > 0) duration = `${duration} second${duration > 1 ? "s" : ""}`;
-                            else duration = "less than a day";
-                        }
-                    }
-                }
-            }
-        }
-        console.log(duration)
 
     // Bikin Variable untuk menampung data output
     let dataProject = {
         projectName,
         startDate,
         endDate,
-        duration,
         description,
         tech1 : tech1.checked == true ? true : false,
         tech2 : tech2.checked == true ? true : false,
@@ -117,7 +88,7 @@ const showProject = () => {
         <div class="card">
         <img src="${projects[i].uploadImage}" alt="post" />
         <h4>${projects[i].projectName}</h4>
-        <span>durasi : ${projects[i].duration} </span>
+        <span>durasi : 3 bulan </span>
         <p>${projects[i].description}</p>
         <div class="technologyIcon">
         ${projects[i].tech1 ? '<img src="./assets/images/js.png" alt="tech1">' : ''}
